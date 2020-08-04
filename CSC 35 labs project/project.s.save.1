@@ -1,0 +1,45 @@
+.data 
+Message:
+    .ascii "Welcome to Rick and Morty's Mystery Word!\n\0"
+P1Mes:
+    .ascii "Player 1, enter a word: \0"
+GameMes1:
+    .ascii "Guess a letter: \n\0"
+GameMes2:
+    .ascii "Your secret word: \n\0"
+GameWin:
+    .ascii "Congrats! You guessed the secret word!\n\0"
+Buffer1:
+    .space 30
+Buffer2:
+    .space 30
+
+.text
+.global _start
+_start:
+   mov $Message, %rax
+   call PrintCString 
+
+   mov $P1Mes, %rax
+   call PrintCString
+   
+   mov $30, %rbx 
+   mov $Buffer1, %rax
+   call ScanCString 
+
+   mov $Buffer1, %rax
+   call LengthCString
+   mov %rax,%rbx
+   mov $0,%rcx 
+   call ClearScreen
+
+   mov $GameMes2, %rax  
+   call PrintCString
+Do:
+
+    
+   
+   call EndProgram 
+
+
+

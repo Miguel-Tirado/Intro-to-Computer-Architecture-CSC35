@@ -1,0 +1,34 @@
+.data
+HellowWorld:
+	.ascii "Hellow World\n"
+Quote:
+     .ascii "My Name is Miguel Tirado\n"
+Quote2:
+     .ascii "Winter is Coming\n"
+.text
+.global _start 
+_start:
+   mov $1, %rax
+   mov $1, %rdi
+   mov $HellowWorld, %rsi
+#------We must count the amount of character there are in our quote-----#
+   mov $13, %rdx
+#-----------------------------------------------------------------------#
+   syscall
+
+   mov $1, %rax
+   mov $1, %rdi
+   mov $Quote, %rsi
+   mov $25,%rdx
+   syscall
+
+   mov $1, %rax
+   mov $1, %rdi 
+   mov $Quote2, %rsi
+   mov $18, %rdx
+   syscall
+#--------------This Ends Program-------------------#   
+   mov $60 , %rax
+   mov $0, %rdi
+   syscall 
+#--------------------------------------------------#
